@@ -1,33 +1,23 @@
-import { CustomCursor } from "@/components/CustomCursor";
 import { InteractiveBackground } from "@/components/InteractiveBackground";
-import { NoiseOverlay } from "@/components/NoiseOverlay";
-import { ScrollProgress } from "@/components/ScrollProgress";
-import { Hero } from "@/components/Hero";
+import { HeroSection } from "@/components/HeroSection";
+import { FactsGridSection } from "@/components/FactsGridSection";
+import { PhilosophySection } from "@/components/PhilosophySection";
 import { WorkSection } from "@/components/WorkSection";
-import { AboutSection } from "@/components/AboutSection";
+import { ExpertiseSection } from "@/components/ExpertiseSection";
 import { ContactSection } from "@/components/ContactSection";
+import { Footer } from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="relative bg-background">
-      <CustomCursor />
+    <div className="relative">
       <InteractiveBackground />
-      <NoiseOverlay />
-      <ScrollProgress />
-      
-      <main className="relative z-10">
-        <Hero />
-        <WorkSection />
-        <AboutSection />
-        <ContactSection />
-      </main>
-
-      <footer className="relative z-10 py-12 px-6 border-t border-border">
-        <div className="max-w-7xl mx-auto flex justify-between items-center text-sm text-muted-foreground">
-          <p>© 2024 Creative Portfolio. All rights reserved.</p>
-          <p>Designed & Developed with passion</p>
-        </div>
-      </footer>
+      <HeroSection />
+      <FactsGridSection />
+      <PhilosophySection />
+      <WorkSection />
+      <ExpertiseSection />
+      <ContactSection />
+      <Footer />
     </div>
   );
 };
