@@ -120,54 +120,35 @@ export const WorkSection = () => {
                     animate={projectInView ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                   >
-                    <motion.div 
-                      className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-black"
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ duration: 0.4 }}
-                    >
-                      {/* Media */}
-                      {project.mediaType === "video" ? (
-                        <motion.video
-                          src={project.src}
-                          className="w-full h-full object-cover"
-                          autoPlay
-                          loop
-                          muted
-                          playsInline
-                          initial={{ scale: 1.05 }}
-                          animate={projectInView ? { scale: 1 } : { scale: 1.05 }}
-                          transition={{ duration: 0.8 }}
-                        />
-                      ) : (
-                        <motion.img
-                          src={project.src}
-                          alt={project.title}
-                          className="w-full h-full object-cover"
-                          initial={{ scale: 1.05 }}
-                          animate={projectInView ? { scale: 1 } : { scale: 1.05 }}
-                          transition={{ duration: 0.8 }}
-                        />
-                      )}
-
-                      {/* Лёгкий градиент сверху медиа */}
-                      <motion.div
-                        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/30 via-transparent to-primary/10"
-                        initial={{ opacity: 0.4 }}
-                        whileHover={{ opacity: 0.25 }}
-                        transition={{ duration: 0.4 }}
+                  <motion.div 
+                    className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-black"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    {/* Media */}
+                    {project.mediaType === "video" ? (
+                      <motion.video
+                        src={project.src}
+                        className="w-full h-full object-cover"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        initial={{ scale: 1.05 }}
+                        animate={projectInView ? { scale: 1 } : { scale: 1.05 }}
+                        transition={{ duration: 0.8 }}
                       />
-
-                      {/* Project number поверх медиа */}
-                      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                        <motion.span
-                          className="text-[18vw] md:text-[10vw] font-display text-primary/15 leading-none"
-                          initial={{ scale: 0 }}
-                          animate={projectInView ? { scale: 1 } : { scale: 0 }}
-                          transition={{ duration: 0.8, delay: 0.4 }}
-                        >
-                          {(index + 1).toString().padStart(2, "0")}
-                        </motion.span>
-                      </div>
+                    ) : (
+                      <motion.img
+                        src={project.src}
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                        initial={{ scale: 1.05 }}
+                        animate={projectInView ? { scale: 1 } : { scale: 1.05 }}
+                        transition={{ duration: 0.8 }}
+                      />
+                    )}
+                 
 
                       {/* Animated border */}
                       <motion.div
