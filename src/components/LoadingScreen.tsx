@@ -45,39 +45,42 @@ export const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
 
       {/* Loading content */}
       <div className="relative z-10 text-center space-y-8">
-        {/* Animated logo/text */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <motion.h1 className="font-display text-6xl md:text-8xl">
-            {["C", "R", "E", "A", "T", "I", "V", "E"].map((letter, i) => (
-              <motion.span
-                key={i}
-                className="inline-block text-white"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 + i * 0.05, duration: 0.4 }}
-              >
-                {letter}
-              </motion.span>
-            ))}
-          </motion.h1>
-          <motion.h2 className="font-display text-6xl md:text-8xl text-primary mt-2">
-            {["D", "E", "V"].map((letter, i) => (
-              <motion.span
-                key={i}
-                className="inline-block"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 + i * 0.05, duration: 0.4 }}
-              >
-                {letter}
-              </motion.span>
-            ))}
-          </motion.h2>
-        </motion.div>
+
+       {/* Animated logo/text */}
+       <motion.div
+         initial={{ opacity: 0, scale: 0.8 }}
+         animate={{ opacity: 1, scale: 1 }}
+         transition={{ duration: 0.5 }}
+       >
+         <motion.h1 className="font-display text-5xl md:text-7xl text-white">
+           {["O", "N", "E", " ", "M", "O", "M", "E", "N", "T"].map((letter, i) => (
+             <motion.span
+               key={i}
+               className="inline-block"
+               initial={{ opacity: 0, y: 20 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ delay: 0.1 + i * 0.04, duration: 0.35 }}
+             >
+               {letter}
+             </motion.span>
+           ))}
+         </motion.h1>
+       
+         <motion.h2 className="font-display text-5xl md:text-7xl text-primary mt-2">
+           {["L", "O", "A", "D", "I", "N", "G", ".", ".", "."].map((letter, i) => (
+             <motion.span
+               key={i}
+               className="inline-block"
+               initial={{ opacity: 0, y: -20 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ delay: 0.6 + i * 0.03, duration: 0.35 }}
+             >
+               {letter}
+             </motion.span>
+           ))}
+         </motion.h2>
+       </motion.div>
+          
 
         {/* Progress bar */}
         <motion.div

@@ -1,30 +1,52 @@
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
+import sping from "../assets/sping.png";
+import nike from "../assets/nike.mp4";
+import wengy from "../assets/wengy.png";
+import ava from "../assets/ava.png";
+import project2 from "../assets/project2.png";
+
 const projects = [
   {
-    title: "E-Commerce Platform",
+    title: "Dev Agency",
+    category: "Web Development",
+    year: "2025",
+    description: "modern website of software developer company",
+    mediaType: "image",
+    src: sping,
+  },
+  {
+    title: "Air1000",
+    category: "Web Development",
+    year: "2025",
+    description: "Website inspired by nike air max 1000",
+    mediaType: "video",
+    src: nike,
+  },
+  {
+    title: "Wengy",
+    category: "Web Development",
+    year: "2025",
+    description: "Marketing Agency website",
+    mediaType: "image",
+    src: wengy,
+  },
+  {
+    title: "Ava100",
     category: "Web Development",
     year: "2024",
-    description: "A modern shopping experience with seamless checkout",
+    description: "Website of Real Estate Agency",
+    mediaType: "image",
+    src: ava,
   },
   {
-    title: "Brand Identity",
-    category: "Design",
-    year: "2023",
-    description: "Complete visual identity for a tech startup",
-  },
-  {
-    title: "Mobile App",
-    category: "App Development",
-    year: "2024",
-    description: "Fitness tracking app with social features",
-  },
-  {
-    title: "Dashboard UI",
-    category: "Interface Design",
-    year: "2023",
-    description: "Analytics platform with real-time data visualization",
+    title: "City-Wall",
+    category: "Web Development",
+    year: "2025",
+    description: "Website of cleaning company",
+    mediaType: "image",
+    src: project2,
   },
 ];
 
@@ -94,38 +116,64 @@ export const WorkSection = () => {
                   {/* Project Visual */}
                   <motion.div
                     className={`order-2 ${index % 2 === 0 ? "md:order-1" : "md:order-2"}`}
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={projectInView ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    animate={projectInView ? { scale: 1, opacity: 1 } : { scale: 0.9, opacity: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                   >
                     <motion.div 
-                      className="relative aspect-[4/3] bg-secondary overflow-hidden"
+                      className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-black"
                       whileHover={{ scale: 1.02 }}
                       transition={{ duration: 0.4 }}
                     >
+                      {/* Media */}
+                      {project.mediaType === "video" ? (
+                        <motion.video
+                          src={project.src}
+                          className="w-full h-full object-cover"
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          initial={{ scale: 1.05 }}
+                          animate={projectInView ? { scale: 1 } : { scale: 1.05 }}
+                          transition={{ duration: 0.8 }}
+                        />
+                      ) : (
+                        <motion.img
+                          src={project.src}
+                          alt={project.title}
+                          className="w-full h-full object-cover"
+                          initial={{ scale: 1.05 }}
+                          animate={projectInView ? { scale: 1 } : { scale: 1.05 }}
+                          transition={{ duration: 0.8 }}
+                        />
+                      )}
+
+                      {/* Лёгкий градиент сверху медиа */}
                       <motion.div
-                        className="absolute inset-0 bg-gradient-to-br from-primary/30 via-transparent to-primary/10"
-                        whileHover={{ opacity: 0.3 }}
+                        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/30 via-transparent to-primary/10"
+                        initial={{ opacity: 0.4 }}
+                        whileHover={{ opacity: 0.25 }}
                         transition={{ duration: 0.4 }}
                       />
-                      
-                      {/* Project number */}
-                      <div className="absolute inset-0 flex items-center justify-center">
+
+                      {/* Project number поверх медиа */}
+                      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
                         <motion.span
-                          className="text-[20vw] font-display text-primary/10 leading-none"
+                          className="text-[18vw] md:text-[10vw] font-display text-primary/15 leading-none"
                           initial={{ scale: 0 }}
                           animate={projectInView ? { scale: 1 } : { scale: 0 }}
                           transition={{ duration: 0.8, delay: 0.4 }}
                         >
-                          {(index + 1).toString().padStart(2, '0')}
+                          {(index + 1).toString().padStart(2, "0")}
                         </motion.span>
                       </div>
 
                       {/* Animated border */}
                       <motion.div
-                        className="absolute inset-0 border-2 border-primary"
-                        initial={{ scale: 0, opacity: 0 }}
-                        whileHover={{ scale: 1, opacity: 1 }}
+                        className="pointer-events-none absolute inset-0 border border-primary/60"
+                        initial={{ opacity: 0 }}
+                        whileHover={{ opacity: 1 }}
                         transition={{ duration: 0.3 }}
                       />
                     </motion.div>

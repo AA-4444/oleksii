@@ -3,10 +3,8 @@ import { useRef } from "react";
 
 const footerLinks = {
   social: [
-    { name: "Twitter", href: "#" },
-    { name: "LinkedIn", href: "#" },
-    { name: "GitHub", href: "#" },
-    { name: "Dribbble", href: "#" },
+    { name: "GitHub", href: "https://github.com/AA-4444" },
+    { name: "Telegram", href: "https://t.me/uu_4444" },
   ],
   navigate: [
     { name: "Home", href: "#" },
@@ -15,9 +13,9 @@ const footerLinks = {
     { name: "Contact", href: "#" },
   ],
   legal: [
-    { name: "Privacy", href: "#" },
-    { name: "Terms", href: "#" },
-    { name: "Cookies", href: "#" },
+    { name: "Privacy", href: "https://policies.google.com/privacy" },
+    { name: "Terms", href: "https://policies.google.com/terms" },
+    { name: "Cookies", href: "https://policies.google.com/technologies/cookies" },
   ],
 };
 
@@ -38,9 +36,9 @@ export const Footer = () => {
             className="space-y-4"
           >
             <h3 className="text-4xl font-display">
-              <span className="text-primary">CREATIVE</span>
+              <span className="text-primary">Oleksii</span>
               <br />
-              DEV
+              Zarytskyi
             </h3>
             <p className="text-muted-foreground text-sm font-mono">
               [ Crafting exceptional digital experiences ]
@@ -66,6 +64,8 @@ export const Footer = () => {
                 >
                   <a
                     href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-foreground hover:text-primary transition-colors inline-flex items-center gap-2 font-mono"
                   >
                     <motion.span 
@@ -136,6 +136,8 @@ export const Footer = () => {
                 >
                   <a
                     href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-foreground hover:text-primary transition-colors inline-flex items-center gap-2 font-mono"
                   >
                     <motion.span 

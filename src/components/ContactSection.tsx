@@ -6,6 +6,19 @@ export const ContactSection = () => {
   const isInView = useInView(sectionRef, { once: false, amount: 0.3 });
   const [isButtonHovered, setIsButtonHovered] = useState(false);
 
+  const email = "zarytskyi4444@gmail.com";
+
+  const handleButtonClick = () => {
+    // включаем глич
+    setIsButtonHovered(true);
+
+    // даём анимации отыграть и только потом открываем почту
+    setTimeout(() => {
+      window.location.href = `mailto:${email}`;
+      setIsButtonHovered(false);
+    }, 400); // совпадает с duration глича
+  };
+
   return (
     <motion.section
       ref={sectionRef}
@@ -50,160 +63,160 @@ export const ContactSection = () => {
             </motion.p>
           </div>
 
-          {/* Enhanced GET IN TOUCH button */}
+          {/* GET IN TOUCH button */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            <motion.button
-              className="group relative px-16 py-8 font-mono text-xl font-bold overflow-hidden cursor-pointer"
-              whileHover="hover"
-              whileTap={{ scale: 0.95 }}
-              onHoverStart={() => setIsButtonHovered(true)}
-              onHoverEnd={() => setIsButtonHovered(false)}
-            >
-              {/* Main border */}
-              <motion.div 
-                className="absolute inset-0 border-2 border-primary"
-                variants={{
-                  hover: {
-                    scale: [1, 1.05, 1],
-                    rotate: [0, 2, -2, 0],
-                  }
-                }}
-                transition={{ duration: 0.4 }}
-              />
-              
-              {/* Animated stripes background */}
-              <div className="absolute inset-0">
-                {[...Array(8)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute inset-y-0 bg-primary"
-                    style={{
-                      left: `${i * 12.5}%`,
-                      width: "12.5%",
-                    }}
-                    initial={{ scaleX: 0, originX: 0 }}
-                    variants={{
-                      hover: { scaleX: 1 }
-                    }}
-                    transition={{ 
-                      duration: 0.3, 
-                      delay: i * 0.03,
-                      ease: "easeOut"
-                    }}
-                  />
-                ))}
-              </div>
-              
-              {/* Outer glow rings */}
-              <motion.div
-                className="absolute inset-0"
-                animate={{
-                  boxShadow: [
-                    "0 0 0 0 hsl(var(--primary) / 0.7)",
-                    "0 0 0 20px hsl(var(--primary) / 0)",
-                  ],
-                }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              />
-              
-              {/* Corner accents */}
-              <motion.div
-                className="absolute top-0 left-0 w-6 h-6 border-t-4 border-l-4 border-primary"
-                variants={{
-                  hover: { scale: 1.3, x: -6, y: -6 }
-                }}
-                transition={{ duration: 0.3 }}
-              />
-              <motion.div
-                className="absolute top-0 right-0 w-6 h-6 border-t-4 border-r-4 border-primary"
-                variants={{
-                  hover: { scale: 1.3, x: 6, y: -6 }
-                }}
-                transition={{ duration: 0.3 }}
-              />
-              <motion.div
-                className="absolute bottom-0 left-0 w-6 h-6 border-b-4 border-l-4 border-primary"
-                variants={{
-                  hover: { scale: 1.3, x: -6, y: 6 }
-                }}
-                transition={{ duration: 0.3 }}
-              />
-              <motion.div
-                className="absolute bottom-0 right-0 w-6 h-6 border-b-4 border-r-4 border-primary"
-                variants={{
-                  hover: { scale: 1.3, x: 6, y: 6 }
-                }}
-                transition={{ duration: 0.3 }}
-              />
-              
-              {/* Glitch effect */}
-              {isButtonHovered && (
-                <>
-                  <motion.div
-                    className="absolute inset-0 border-2 border-primary"
-                    animate={{
-                      x: [-3, 3, -3, 0],
-                      y: [2, -2, 2, 0],
-                      opacity: [0.5, 1, 0.5, 0],
-                    }}
-                    transition={{ duration: 0.4, times: [0, 0.3, 0.6, 1] }}
-                  />
-                  <motion.div
-                    className="absolute inset-0 border-2 border-primary"
-                    animate={{
-                      x: [3, -3, 3, 0],
-                      y: [-2, 2, -2, 0],
-                      opacity: [0.5, 1, 0.5, 0],
-                    }}
-                    transition={{ duration: 0.4, delay: 0.1, times: [0, 0.3, 0.6, 1] }}
-                  />
-                </>
-              )}
-              
-              {/* Scan line */}
-              <motion.div
-                className="absolute left-0 right-0 h-px bg-primary/50"
-                variants={{
-                  hover: {
-                    top: ["0%", "100%"],
-                  }
-                }}
-                transition={{ duration: 0.6, ease: "linear" }}
-              />
-              
-              {/* Text */}
-              <span className="relative z-10 flex items-center gap-4 text-foreground group-hover:text-background transition-colors duration-300">
-                <motion.span
-                  variants={{
-                    hover: {
-                      x: [-2, 2, -2, 0],
-                    }
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  GET IN TOUCH
-                </motion.span>
-                <motion.span
-                  animate={isButtonHovered ? { 
-                    rotate: [0, 90, 180, 270, 360],
-                    scale: [1, 1.2, 1]
-                  } : {
-                    rotate: [0, 90, 0]
-                  }}
-                  transition={{ 
-                    duration: isButtonHovered ? 0.6 : 2,
-                    repeat: isButtonHovered ? 0 : Infinity,
-                    repeatDelay: 1
-                  }}
-                >
-                  →
-                </motion.span>
-              </span>
-            </motion.button>
+           <motion.a
+             href="mailto:zarytskyi4444@gmail.com"
+             className="group relative px-16 py-8 font-mono text-xl font-bold overflow-hidden cursor-pointer inline-block"
+             whileHover="hover"
+             whileTap="hover"
+           >
+             {/* Main border */}
+             <motion.div 
+               className="absolute inset-0 border-2 border-primary"
+               variants={{
+                 hover: {
+                   scale: [1, 1.05, 1],
+                   rotate: [0, 2, -2, 0],
+                 }
+               }}
+               transition={{ duration: 0.4 }}
+             />
+             
+             {/* Animated stripes background */}
+             <div className="absolute inset-0 pointer-events-none">
+               {[...Array(8)].map((_, i) => (
+                 <motion.div
+                   key={i}
+                   className="absolute inset-y-0 bg-primary"
+                   style={{
+                     left: `${i * 12.5}%`,
+                     width: "12.5%",
+                   }}
+                   initial={{ scaleX: 0, originX: 0 }}
+                   variants={{
+                     hover: { scaleX: 1 }
+                   }}
+                   transition={{ 
+                     duration: 0.3, 
+                     delay: i * 0.03,
+                     ease: "easeOut"
+                   }}
+                 />
+               ))}
+             </div>
+             
+             {/* Outer glow rings */}
+             <motion.div
+               className="absolute inset-0 pointer-events-none"
+               animate={{
+                 boxShadow: [
+                   "0 0 0 0 hsl(var(--primary) / 0.7)",
+                   "0 0 0 20px hsl(var(--primary) / 0)",
+                 ],
+               }}
+               transition={{ duration: 1.5, repeat: Infinity }}
+             />
+             
+             {/* Corner accents */}
+             <motion.div
+               className="absolute top-0 left-0 w-6 h-6 border-t-4 border-l-4 border-primary"
+               variants={{
+                 hover: { scale: 1.3, x: -6, y: -6 }
+               }}
+               transition={{ duration: 0.3 }}
+             />
+             <motion.div
+               className="absolute top-0 right-0 w-6 h-6 border-t-4 border-r-4 border-primary"
+               variants={{
+                 hover: { scale: 1.3, x: 6, y: -6 }
+               }}
+               transition={{ duration: 0.3 }}
+             />
+             <motion.div
+               className="absolute bottom-0 left-0 w-6 h-6 border-b-4 border-l-4 border-primary"
+               variants={{
+                 hover: { scale: 1.3, x: -6, y: 6 }
+               }}
+               transition={{ duration: 0.3 }}
+             />
+             <motion.div
+               className="absolute bottom-0 right-0 w-6 h-6 border-b-4 border-r-4 border-primary"
+               variants={{
+                 hover: { scale: 1.3, x: 6, y: 6 }
+               }}
+               transition={{ duration: 0.3 }}
+             />
+             
+             {/* Glitch effect */}
+             <motion.div
+               className="absolute inset-0 border-2 border-primary"
+               initial={{ opacity: 0 }}
+               variants={{
+                 hover: {
+                   x: [-3, 3, -3, 0],
+                   y: [2, -2, 2, 0],
+                   opacity: [0.5, 1, 0.5, 0],
+                 }
+               }}
+               transition={{ duration: 0.4, times: [0, 0.3, 0.6, 1] }}
+             />
+             <motion.div
+               className="absolute inset-0 border-2 border-primary"
+               initial={{ opacity: 0 }}
+               variants={{
+                 hover: {
+                   x: [3, -3, 3, 0],
+                   y: [-2, 2, -2, 0],
+                   opacity: [0.5, 1, 0.5, 0],
+                 }
+               }}
+               transition={{ duration: 0.4, delay: 0.1, times: [0, 0.3, 0.6, 1] }}
+             />
+             
+             {/* Scan line – по умолчанию скрыта */}
+             <motion.div
+               className="absolute left-0 right-0 h-px bg-primary/50"
+               initial={{ opacity: 0, top: "0%" }}
+               variants={{
+                 hover: {
+                   opacity: 1,
+                   top: ["0%", "100%"],
+                 }
+               }}
+               transition={{ duration: 0.6, ease: "linear" }}
+             />
+             
+             {/* Text */}
+             <span className="relative z-10 flex items-center gap-4 text-foreground group-hover:text-background transition-colors duration-300">
+               <motion.span
+                 variants={{
+                   hover: {
+                     x: [-2, 2, -2, 0],
+                   }
+                 }}
+                 transition={{ duration: 0.3 }}
+               >
+                 GET IN TOUCH
+               </motion.span>
+               <motion.span
+                 variants={{
+                   hover: {
+                     rotate: [0, 90, 180, 270, 360],
+                     scale: [1, 1.2, 1],
+                   }
+                 }}
+                 transition={{ duration: 0.6 }}
+               >
+                 →
+               </motion.span>
+             </span>
+           </motion.a>
+            
           </motion.div>
 
           {/* Contact Info */}
@@ -213,8 +226,9 @@ export const ContactSection = () => {
             transition={{ duration: 0.8, delay: 1 }}
             className="flex flex-col md:flex-row justify-center items-center gap-8 pt-8 font-mono text-muted-foreground"
           >
+            {/* Email */}
             <motion.a
-              href="mailto:hello@example.com"
+              href={`mailto:${email}`}
               className="flex items-center gap-3 hover:text-primary transition-colors group"
               whileHover={{ x: 5 }}
             >
@@ -225,13 +239,16 @@ export const ContactSection = () => {
               >
                 →
               </motion.span>
-              hello@example.com
+              {email}
             </motion.a>
             
             <span className="hidden md:block w-px h-8 bg-primary/30" />
             
+            {/* Telegram */}
             <motion.a
-              href="tel:+1234567890"
+              href="https://t.me/uu_4444"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-3 hover:text-primary transition-colors group"
               whileHover={{ x: 5 }}
             >
@@ -242,7 +259,7 @@ export const ContactSection = () => {
               >
                 →
               </motion.span>
-              +1 (234) 567-890
+              @uu_4444
             </motion.a>
           </motion.div>
         </motion.div>

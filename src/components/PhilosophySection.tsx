@@ -76,9 +76,9 @@ export const PhilosophySection = () => {
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               {[
-                { number: "50+", label: "Projects" },
+                { number: "20+", label: "Projects" },
                 { number: "15+", label: "Clients" },
-                { number: "5+", label: "Years" },
+                { number: "3+", label: "Years" },
               ].map((stat, i) => (
                 <motion.div
                   key={i}

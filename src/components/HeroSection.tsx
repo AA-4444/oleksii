@@ -210,7 +210,11 @@ export const HeroSection = () => {
             className="flex items-center justify-center gap-6 text-2xl md:text-3xl font-light min-h-[3rem]"
           >
             <span className="text-muted-foreground font-mono">
-              <TypingText text="Crafting Digital Experiences" delay={1.8} speed={0.08} />
+              <TypingText
+                text="Crafting Digital Experiences"
+                delay={0.2}     
+                speed={0.02}    
+               />
             </span>
           </motion.div>
 
